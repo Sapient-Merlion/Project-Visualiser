@@ -1,5 +1,4 @@
-# augmentedspaces
-AR Poster
+# Project Visualiser
 
 ```
 npm run start
