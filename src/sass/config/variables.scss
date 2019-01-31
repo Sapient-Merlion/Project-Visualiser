@@ -1,0 +1,22 @@
+// Variables
+$container-padding: 24px;
+$container-width: calc(100% - #{$container-padding * 2});
+$container-width-desktop: calc(100% - 80px);
+$column-padding: 16px;
+
+// Base sizes
+$colors: (
+  c0: #ffa8ae,
+  c1: #ff8ad7,
+  c2: #ffc7eb,
+  c3: #ffc194,
+  c4: #ffcd8a,
+  c5: #eaffa8,
+  c6: #afff8f,
+  c7: #8adeff,
+  c8: #a280ff,
+  c9: #b5a8ff,
+  page: (
+    bg: #1f2432,
+  )
+);

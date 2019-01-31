@@ -1,0 +1,35 @@
+rect[domain=leadership] {
+  fill: map-get($colors, "c0");
+}
+
+rect[domain=marketingStratAnalysis] {
+  fill: map-get($colors, "c1");
+}
+
+rect[domain=tech] {
+  fill: map-get($colors, "c2");
+}
+
+rect[domain=programManagement] {
+  fill: map-get($colors, "c3");
+}
+
+rect[domain=content] {
+  fill: map-get($colors, "c4");
+}
+
+rect[domain=experienceDesign] {
+  fill: map-get($colors, "c5");
+}
+
+rect[domain=design] {
+  fill: map-get($colors, "c6");
+}
+
+rect[domain=businessConsulting] {
+  fill: map-get($colors, "c7");
+}
+
+rect[domain=research] {
+  fill: map-get($colors, "c8");
+}

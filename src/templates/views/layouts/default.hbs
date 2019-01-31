@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{pagetitle}} | {{base.title}}</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <link rel="apple-touch-icon" sizes="57x57" href="{{path.name}}/images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{path.name}}/images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{path.name}}/images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{path.name}}/images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{path.name}}/images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{path.name}}/images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{path.name}}/images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{path.name}}/images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{path.name}}/images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{path.name}}/images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{path.name}}/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{path.name}}/images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{path.name}}/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="{{path.name}}/images/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="{{path.name}}/images/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <!-- build:css -->
+  <link rel="stylesheet" href="/styles/style.css">
+  <!-- endbuild -->
+</head>
+<body class="{{bodyclass}}">
+  <div class="page-loader fade show d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary align-middle" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  {% body %}
+<!-- build:jsLib -->
+<script src="/scripts/libs.js"></script>
+<!-- endbuild -->
+<!-- build:jsMain -->
+<script src="/scripts/main.js"></script>
+<!-- endbuild -->
+
+</body>
+</html>

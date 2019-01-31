@@ -1,0 +1,298 @@
+---
+pagetitle: Project Visualiser
+bodyclass: page page-visualiser
+---
+
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Publicis.Sapient SG</a>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 col-lg-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="nav-dashboard-tab" data-toggle="tab" href="#nav-dashboard" role="tab" aria-controls="nav-dashboard" aria-selected="true">
+              <i class="fas fa-home"></i>
+              Dashboard 
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav-allocation-tab" data-toggle="tab" href="#nav-allocation" role="tab" aria-controls="nav-allocation" aria-selected="true">
+              <i class="fas fa-people-carry"></i>
+              Allocation
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav-projects-tab" data-toggle="tab" href="#nav-projects" role="tab" aria-controls="nav-projects" aria-selected="true">
+              <i class="fas fa-project-diagram"></i>
+              Projects
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav-resources-tab" data-toggle="tab" href="#nav-resources" role="tab" aria-controls="nav-resources" aria-selected="true">
+              <i class="fas fa-person-booth"></i>
+              Resources
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav-clients-tab" data-toggle="tab" href="#nav-clients" role="tab" aria-controls="nav-clients" aria-selected="true">
+              <i class="fas fa-user-check"></i>
+              Clients
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav-admin-tab" data-toggle="tab" href="#nav-admin" role="tab" aria-controls="nav-admin" aria-selected="true">
+              <i class="fas fa-lock"></i>
+              Admin
+            </a>
+          </li>
+        </ul>
+
+        <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Saved reports</span>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Current month
+            </a>
+          </li>
+        </ul> -->
+      </div>
+    </nav>
+    <main role="main" class="col-md-10 ml-sm-auto">
+      
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-dashboard" role="tabpanel" aria-labelledby="nav-dashboard-tab">
+          
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2 btns-dashboard-views">
+                <button type="button" class="btn btn-sm btn-outline-secondary active" data-id="resource">Resource</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-id="project">Project</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-id="contract">Contract (%)</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="visualiser"></div>
+
+          <div class="info-container">
+            <h2 class="info__title"></h2>
+            <p class="info__desc"></p>
+            <table class="info__table table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Allocation (%)</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="nav-allocation" role="tabpanel" aria-labelledby="nav-allocation-tab">
+          
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Allocations</h1>
+          </div>
+
+          <div class="border-bottom bp-4 mb-4">
+            <input type="search" class="mb-4 form-control" data-table="allocation-table" placeholder="Filter">
+
+            <form class="needs-validation mb-4">
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="select-project" class="w-100">
+                    <div>Project</div>
+                    <select class="select-project" name="project" id="select-project"></select>
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label for="select-resource" class="w-100">
+                    <div>Resource(s)</div>
+                    <select class="select-resource" multiple="multiple" name="resource" id="select-resource"></select>
+                  </label>
+                </div>
+                <div class="col-md-3">
+                  <label for="select-allocation" class="w-100">
+                    <div>Allocation</div>
+                    <select class="select-allocation" name="allocation" id="select-allocation">
+                      <option value="100">100%</option>
+                      <option value="10">10%</option>
+                      <option value="10">10%</option>
+                      <option value="20">20%</option>
+                      <option value="25">25%</option>
+                      <option value="30">30%</option>
+                      <option value="40">40%</option>
+                      <option value="50">50%</option>
+                      <option value="60">60%</option>
+                      <option value="70">70%</option>
+                      <option value="75">75%</option>
+                      <option value="80">80%</option>
+                      <option value="90">90%</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="col-md-1">
+                  <button class="btn btn-primary mt-4 btn-resource-add">Add</button>
+                </div>
+              </div>
+            </form>
+
+            <table class="allocation-table table table-striped ">
+            </table>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="nav-projects" role="tabpanel" aria-labelledby="nav-projects-tab">
+          
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Projects</h1>
+          </div>
+
+          <div class="border-bottom bp-4 mb-4">
+            <input type="search" class="light-table-filter mb-4 form-control" data-table="projects-table" placeholder="Filter">
+
+            <table class="projects-table table table-striped ">
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>PID</th>
+                  <th>Track</th>
+                  <th>Description</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Biz Days</th>
+                  <th># of Resources</th>
+                  <th>Revenue (S$)</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <div class="tab-pane fade" id="nav-resources" role="tabpanel" aria-labelledby="nav-resources-tab">
+          
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Resources</h1>
+          </div>
+
+          <div class="border-bottom bp-4 mb-4">
+            <input type="search" class="light-table-filter mb-4 form-control" data-table="resources-table" placeholder="Filter">
+
+            <table class="resources-table table table-striped ">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Domain</th>
+                  <th>Timezone</th>
+                  <th>Phone</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <div class="tab-pane fade" id="nav-clients" role="tabpanel" aria-labelledby="nav-clients-tab">
+          
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Clients</h1>
+          </div>
+
+          <div class="border-bottom bp-4 mb-4">
+            <input type="search" class="light-table-filter mb-4 form-control" data-table="clients-table" placeholder="Filter">
+
+            <table class="clients-table table table-striped ">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th># of tracks</th>
+                  <th># of resources</th>
+                  <th>Probability</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab">
+          
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Admin</h1>
+          </div>
+
+          <div class="">
+            <a class="btn btn-primary btn-validate-user" href="https://api.resourceguruapp.com/oauth/authorize?client_id=f290fa8d46576661ea6577e3f60df0d2514d038f43c8eec159ee06916eb99f08&redirect_uri=https://720db9c1.ap.ngrok.io&response_type=code">Revalidate User</a>
+            <button type="button" class="btn btn-primary btn-update-resources">Update Resource Data from Resource Guru</button>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<div aria-live="polite" aria-atomic="true" style="position: absolute; bottom: 10px; right: 10px;" class="toast-container">
+</div>
+<div class="templates hide">
+  <script id="toastTemplate" type="text/x-handlebars-template">
+    <div id="<%- id %>" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <% if (typeof header !== 'undefined') { %>
+        <div class="toast-header"><%= header %></div>
+      <% } %>
+      <% if (typeof body !== 'undefined') { %>
+      <div class="toast-body"><%= body %></div>
+      <% } %>
+    </div>
+  </script>
+  <script id="modalTemplate" type="text/x-handlebars-template">
+    <div id="<%- id %>" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <% if (typeof header !== 'undefined') { %>
+          <div class="modal-header">
+            <%= header %>
+          </div>
+          <% } %>
+          <% if (typeof body !== 'undefined') { %>
+          <div class="modal-body">
+            <%= body %>
+          </div>
+          <% } %>
+          <% if (typeof footer !== 'undefined') { %>
+          <div class="modal-footer">
+            <%= footer %>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </script>
+</div>
+<div class="modal fade" id="modal--googleSignIn" tabindex="-1" role="dialog" aria-labelledby="modal--googleSignInTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal--googleSignInTitle">Google SignIn</h5>
+      </div>
+      <div class="modal-body">
+        <button id="authorize_button" class="btn btn-primary">Authorize</button>
+        <button id="signout_button" class="btn btn-secondary">Sign Out</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+<script defer src="https://apis.google.com/js/api.js"
+  onload="this.onload=function(){};handleClientLoad()"
+  onreadystatechange="if (this.readyState === 'complete') this.onload()">
+</script>
